@@ -1,0 +1,12 @@
+<div id="ValuationSources" class="list-group">
+    <div class="list-container">
+        <a *ngFor="let source of sources"
+           class="list-group-item list-group-item-action"
+           [id]="'vs_' + source.valuationSourceID"
+           (click)="onSelect(source)"
+           style="cursor: pointer;"
+           [class.active]="source.valuationSourceID === selectedId">
+            {{ source.valuationSourceName }}
+        </a>
+    </div>
+</div>

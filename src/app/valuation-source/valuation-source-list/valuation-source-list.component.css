@@ -1,0 +1,46 @@
+
+#ValuationSources {
+  max-width: 390px;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-right: 1px solid #ddd; 
+  border-radius: 8px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.list-group-item {
+  display: block;
+  border: 1px solid transparent;
+  padding: 12px 15px;
+  font-size: 16px;
+  font-family:Verdana;
+  background-color: #fff;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
+  border-bottom: 1px solid #ddd;
+}
+
+
+  .list-group-item:hover {
+    background-color: #e2e6ea;
+    transform: scale(1.02);
+  }
+
+
+  .list-group-item.active {
+    background-color: #007bff !important;
+    color: white;
+    border-color: #007bff; 
+  }
+
+
+#ValuationSources .list-group-item:last-child {
+  border-bottom: none;
+}
+
+.list-container {
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}

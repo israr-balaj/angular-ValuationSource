@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+app-valuation-source-list {
+  width: 20%;
+  border-right: 1px solid #ccc;
+}
+
+app-valuation-source-form {
+  width: 80%;
+  padding: 20px;
+}

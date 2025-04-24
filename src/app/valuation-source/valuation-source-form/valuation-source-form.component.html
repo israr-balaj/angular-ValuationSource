@@ -1,0 +1,27 @@
+<div class="form-container">
+    <!-- Add New Source Button, placed at top-right -->
+    <button type="button" (click)="resetForm()" class="add-new-btn">
+        Add New Source
+    </button>
+
+    <h2>{{ selectedValuationSource.valuationSourceID === 0  ? 'Add New' : 'Update' }} Valuation Source</h2>
+    <!-- Form element -->
+    <form #form="ngForm"  (ngSubmit)="onSubmit()" class="valuation-source-form">
+        <label for="valuationSourceName">Name:</label>
+        <input id="valuationSourceName"
+               type="text"
+               [(ngModel)]="selectedValuationSource.valuationSourceName"
+               name="valuationSourceName"
+               required
+               #valuationSourceName="ngModel" />
+
+        <!-- Error message if validation fails -->
+        <div *ngIf="valuationSourceName.invalid && valuationSourceName.touched" class="error-message">
+            Name is required.
+        </div>
+
+        <button type="submit" class="submit-btn">
+            {{ selectedValuationSource.valuationSourceID === 0 ? 'Save' : 'Update' }}
+        </button>
+    </form>
+</div>
