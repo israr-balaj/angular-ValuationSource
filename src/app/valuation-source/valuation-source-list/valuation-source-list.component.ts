@@ -27,6 +27,10 @@ export class ValuationSourceListComponent {
   selectedId: number | null = null;
 
   ngOnInit(): void {
+    this.loadValuationSources();
+  }
+
+  loadValuationSources() {
     this.http.get<ValuationSource[]>('https://localhost:7010/api/ValuationSource/GetList')
       .subscribe({
         next: (data) => {
@@ -37,7 +41,6 @@ export class ValuationSourceListComponent {
         }
       });
   }
-
 
   onSelect(source: ValuationSource) {
     this.selectedId = source.valuationSourceID;

@@ -1,5 +1,5 @@
 <div class="container">
-    <app-valuation-source-list (selectSource)="onSourceSelected($event)"></app-valuation-source-list>
-    <app-valuation-source-form [selectedSource]="selectedSource"></app-valuation-source-form>
+    <app-valuation-source-list (selectSource)="onSourceSelected($event)" ></app-valuation-source-list>
+    <app-valuation-source-form [selectedSource]="selectedSource" (refreshList)="onRefreshList()"></app-valuation-source-form>
 
 </div>

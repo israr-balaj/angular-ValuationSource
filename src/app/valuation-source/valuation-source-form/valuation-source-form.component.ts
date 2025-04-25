@@ -16,6 +16,7 @@ export class ValuationSourceFormComponent implements OnChanges {
   //@Input() selectedSource: { valuationSourceID: number, valuationSourceName: string } | null = null;
   @Input() selectedSource: ValuationSource | null = null;
   @Output() clearSelection = new EventEmitter<void>();
+  @Output() refreshList = new EventEmitter<void>();
 
 
   //form = {
@@ -56,7 +57,6 @@ ngOnChanges(changes: SimpleChanges) {
     if (source) {
       // Copy the selected source data to selectedValuationSource
       this.selectedValuationSource = { ...source };
-      console.table(this.selectedValuationSource);
     } else {
       // Reset form if no source is selected
       this.selectedValuationSource = {
@@ -103,15 +103,14 @@ ngOnChanges(changes: SimpleChanges) {
 
   onSubmit(form: any) {
 
-    if (form.invalid) {
-      return;  // Prevent submission if form is invalid
-    }
+    if (form.invalid) { return; }
     if (this.selectedValuationSource && this.selectedValuationSource.valuationSourceID !==0) {
       //Update: Send full object
       this.valuationSourceService.updateValuationSource(this.selectedValuationSource).subscribe({
         next: () => {
           console.log('Updated successfully');
           this.resetForm(); // Optional: reset the form after update
+          this.refreshList.emit();
         },
         error: err => {
           console.error('Update failed', err);
@@ -126,6 +125,8 @@ ngOnChanges(changes: SimpleChanges) {
         next: () => {
           console.log('Inserted successfully');
           this.resetForm(); // Optional: reset the form after insert
+          this.refreshList.emit();
+          console.log('refreshList emitted'); 
         },
         error: err => {
           console.error('Insert failed', err);
